@@ -6,7 +6,7 @@ body {
 h1 {
   margin: 5%;
   display: inline-block;
-}
+}                                                                          
 
 .tenor-gif-embed {
   
@@ -15,6 +15,10 @@ h1 {
 }
 
 .screenshot {
-  width: 20%;
+  
   margin: auto;
+}
+
+.emote {
+  color: #D6C0B3;
 }
