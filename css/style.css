@@ -23,7 +23,15 @@ h1 {
   color: #D6C0B3;
 }
 
+
+
+
 #login-form {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 50%;
+  margin-left: 25%;
+  position: absolute;
+  width: 50%;
+
 }
+
