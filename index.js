@@ -38,20 +38,20 @@
 // console.log(generatedPassword);
 
 
-const passwordInput = document.getElementById('password');
-const loginButton = document.getElementById('login-button');
-const contentDiv = document.getElementById('content');
+// const passwordInput = document.getElementById('password');
+// const loginButton = document.getElementById('login-button');
+// const contentDiv = document.getElementById('content');
 
-const correctPassword = '123094'; // Replace with your desired password
+// const correctPassword = '123094'; // Replace with your desired password
 
-loginButton.addEventListener('click', () => {
-  const enteredPassword = passwordInput.value;
-  if (enteredPassword === correctPassword) {
-    contentDiv.style.display = 'block';
-    passwordInput.value = ''; // Clear the password field
-    const myDiv = document.getElementById("login-form");
-    myDiv.textContent = ''
-  } else {
-    alert('Incorrect password. Please try again.');
-  }
-});
+// loginButton.addEventListener('click', () => {
+//   const enteredPassword = passwordInput.value;
+//   if (enteredPassword === correctPassword) {
+//     contentDiv.style.display = 'block';
+//     passwordInput.value = ''; // Clear the password field
+//     const myDiv = document.getElementById("login-form");
+//     myDiv.textContent = ''
+//   } else {
+//     alert('Incorrect password. Please try again.');
+//   }
+// });

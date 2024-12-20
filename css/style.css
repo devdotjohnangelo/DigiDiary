@@ -1,27 +1,167 @@
-body {
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  font-family: "Montserrat", serif; 
   text-align: center;
 }
 
-h1 {
-  margin: 5%;
+body {
+  background-image: linear-gradient(to right top, #fef9f2, #fef9f2, #fef9f2, #fef9f2, #fef9f2);
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+
+/* html content */
+
+.title-h1 {
+  margin-top: 1em;
+  font-family: 'miama';
+  font-size: 2.5em
+  
+}
+
+.myname-h2 {
+  font-family: 'miama';
+  font-size: 2em
+}
+
+.posts-p {
+  position: relative;
+  top:5px;
+}
+
+
+.div-span-name {
+  text-align: start;
+  position: relative;
+  font-size: 14px;
+  left: -10px;
+}
+
+.mypic-post {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.div-post-content {
+  text-align: start;
   display: inline-block;
-}                                                                          
-
-.tenor-gif-embed {
+  position: relative;
+  font-size: 12px;
   
-  width: 50%;
+  
+}
+
+#span-date {
+  font-size: 10px;
+  font-style: italic;
+  position: relative;
+  top: -5px;
+}
+
+.small-texts {
+  font-size: 10px;
+  font-style: italic;
+  position: relative;
+  top:-10px; 
+}
+
+
+
+/* Shapes */
+
+.rectangle {
+  margin: auto;
+  height: 35px;
+  width: 150px;
+  border-radius: 40px;
+  background-color: #D8C4B6;
+}
+
+
+
+/* Images */
+
+.quotes-images {
+  position: relative;
   margin: auto;
 }
 
-.screenshot {
-  
-  margin: auto;
+.wrap {
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.emote {
-  color: #D6C0B3;
+.cover-photo {
+  border-radius: 20px;
+  width: 250px;
+  height: 100px;
+  
 }
+
+.profile-picture {
+  border-radius: 70%;
+  width: 85px;
+  height: 85px;
+  position: relative;
+  
+  margin-top: -25px;
+  margin-bottom: .5em;
+  
+  
+}
+
+
+
+
+
+/* Custom fonts */
+@font-face {
+  font-family: miama;
+  src: url(/assets/miama/Miama.ttf);
+}
+
 
 
 
