@@ -152,6 +152,13 @@ hr.style-eight:after {
 
 /* Images */
 
+.carousel {
+  width: 50%;
+  position: relative;
+  margin: auto;
+  
+}
+
 .quotes-images {
   position: relative;
   margin: auto;
