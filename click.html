@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>RatedSPG</title>
+    <title>Happy Birthday!</title>
      <!-- Google fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,24 +14,322 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <style>
+
+        /* design */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: balloonFloat 6s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+            cursor: pointer; /* Add cursor pointer for interactivity */
+            transition: transform 0.3s ease; /* Smooth transition for popping */
+        }
+
+        @keyframes balloonFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* ... (balloon::before and balloon::after styles remain the same) ... */
+
+        .balloon.popped {
+            transform: scale(0); /* Make balloon disappear when popped */
+            transition: transform 0.3s ease;
+        }
+
+
+        /*  */
+       body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #333;
+}
+
+#container {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#greeting h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    color: #e91e63;
+}
+
+#secretMessage {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+#photoGallery {
+    display: flex;
+    justify-content: space-around;
+}
+
+.photo {
+    text-align: center;
+}
+
+.photo img {
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+#letterText {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    white-space: pre-line;
+}
+
+.star {
+    width: 30px;
+    height: 30px;
+    background: yellow;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.star.collected {
+    opacity: 0.5; /* Indicate collected star */
+}
+
+    </style>
+</head>
+
+
 <body>
-    <h1>ILOVEYOUU</h1>
-    <small><span>I want to do these things to youu babyyy </span></small>
+    <div id="container">
+        <section id="greeting">
+            <h1>Happy 27th Birthday Babycakes Koooo💖💗!</h1>
+            <div id="secretMessage"></div>
+        </section>
+        <section id="memories">
+            <h2>Our Cherished Moments</h2>
+            <div style="display: flex; flex-wrap: wrap;" id="photoGallery">
+                <div style="flex: 1; min-width: 200px; box-sizing: border-box;" class="photo">
+                    <img class="quotes-images" src="/assets/image1.png" alt="Memory 1">
+                    <p>Thank you sa pa bff friesss babyyy. Medyo awkward pa ko hereee. Dito mo na kwento yung about sa past mo huhu.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; box-sizing: border-box;" class="photo">
+                    <img class="quotes-images" src="/assets/image2.png" alt="Memory 2">
+                    <p>Eto yung nag linis tayo XD. Dito ko nakita yung collarbone mo. Pramis collarbone lang talaga XD 🤤👀</p>
+                </div>
+                </div>
+        </section>
+        <section id="loveLetter">
+            <h2>A Letter to You</h2>
+            <div id="letterText"></div>
+        </section>
+        <section id="game">
+            <h2>Let's Play a Game!</h2>
+            <div id="quiz">
+                <p>What's my favorite beverage? XD</p>
+                <input type="text" id="iceCreamAnswer">
+                <button id="checkAnswer">Check</button>
+                <p id="feedback"></p>
+            </div>
+            <div id="hiddenMessageGame">
+                <p>Find the hidden word in the stars!</p>
+                <div class="star" data-letter="L"></div>
+                <div class="star" data-letter="O"></div>
+                <div class="star" data-letter="V"></div>
+                <div class="star" data-letter="E"></div> 
+                <p id="hiddenMessageResult"></p>
+                <p id="collectedLettersDisplay"></p> </div>
+        </section>
+        <section id="countdown">
+            <h2>Aking mensahe para sa aking iniirog 🥰🥰❤️😽</h2>
+    <small><span>Ang bilis ng panahon baby. Parang kailan lang no, nung na destino ka sa pandacan. Around July right? Yung first meeting natin spbb yun dba. Yung unang kita natin sa isat isa. Ang cute cute mo talaga non e. Tapos ngayon February na birthday mo naaaa. At saka napaka baby face mo babyy para ka lang talagang teenager tignan XD. You are so cute and prettyyyyy. Basta baby yung paglubog ng araw pang sabbath lang yun XD. Ngayong 12mn pa talaga yung start ng February 28 XD.</span></small>
+    <br>
+    <small><span>Grabe babyyy mag four months na tayong nag uusap simula nung umamin ako sayooo. Namimiss ko yung mga cutie moments natin non XD Sana baby hindi magbago feelings mo para sakin :((. Sobrang attached na ko sayuuuu :(((. Mawawasak ako pag nawala ka sakiiin. Lalo nat kapatid ka paaa. Mahihirapan ako non babyy huhu. Please wait for me haaa. Loobin na maging official at payagan na tayo awat tulong.</span></small>
+    <br>
+    <small><span>Tapos ang dami na ding nagdaan sa atin away tampuhan, pero nandyan ka pa diiin. Dame ko lapses baby ko. Pero napaka forgiving mo. Ayaw ko take advantage yuun. Kaya hayaan mo akong bumawi babyyy. Sana mapagtiisan mo pa meee :((. Sorry din kung napaka weak and pathetic akong lalaki. Puro sorry ng sorry hays. Alam mo yun baby ko, gustong gusto kita as in. Yung tipong ayaw ko na umalis sa tabi mo kung pwede lang XD. attached na attached na ko sauuu. Kaya sana hanggang sa huli ako pa din mahal mo babyyy. Kasi ako ganon unang una sa awat tulong ng Dios, mamahalin kita araw araw hanggat may buhay at lakas sa kapahintulutan po Niya. Namimiss na naman kitaaaa. Pati yung voice mo.</span></small>
+    <br>
+    <small><span>Sana baby okay ka lang po ngayon ah. Mag relax ka na. Wag ma pressure may handaan pa kayo sa sunday. Enjoy your day baby. Pati din si papa mo. Double celebration pala yun, wag ka po sana maiinis or maiirita during your day baby XD. At saka babyy kung kakain ka ng mga bawal that day, sana hinay hinay lang paunti unti tas ready mo gamot mo.Tapos sana after ng birthday celebration nyo strict diet na ha. Nag aalala ako e. Sabe mo masama sa kidney yung iniinom mong gamot :(( Please babyyy kung kakain ka ng mga bawal sa Sunday lang ah. Pleaseee plsssss. Alway take care of you so that you can take care of me babyyy haaa. Dapat may naka ready ka ding gamot for your asthma e. Just in case lang po na mag asthma attack ka po. At saka sa kainan nyo may videoke ba dun? Kanta ka dun babyy ah tapos mag record ka po XD. Send mo sakiiiiin pleaseee. I want to hear you singing in videoke :)))</span></small>
+    <br>
+    <small><span>And babyyy salamat sa Dios, sa pag iingat Niya sayo sa buong taon. Panibagong taon na naman ang naidagdag sayo baby. Nalagpasan mo yung mga malulungkot na araw na dumaan sayo. At alam kong masaya ka na. Masayang maasaya. Kitang kita ko sa mga ngiti mo e. Sobrang blooming mo baby. Minsan nag woworry na ko e. Dumadami na ulit nagpapapansin sayo :(((. Jjelly akoo malala hays. Pero alam ko namang ako lang ang mahal mo e. Dbaaaa babyyy koo??? :**. Samahan Nawa po ikaw palagi baby ko sa paglilingkod mo ha. Focus sa iyong tungkulin at sa family at sa career. I'll support you always baby.</span></small>
+    <br>
+    <small><span>Once again baby, Happy 27th Birthday Babycakessss Koooo💖💗. Please enjoy your day at sa Sunday na kainan nyo po. Wala man ako dun this time, loobin sa next birthday mo pwede na akong pumunta 🙏🥺🥰 I want to hug you sana ngayon kaso ang layo mo at hindi pa pwede. I will always love you to the moon and back baby ko. Sobrang mahal na mahal na mahal kita. </span></small>
     <br>
     <br>
-
-    <div>
-        <iframe class="quotes-images" src="https://giphy.com/embed/3BOniB83ZhDB6" width="80%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a>That kiss on your neeck. Hayssssss :(((((((</a></p>
-    </div>
-
-    <div>
-        <iframe class="quotes-images" src="https://giphy.com/embed/2iP7kth4Aw7GU" width="80%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a>Thisssssssss ackkk.</a></p>
-    </div>
-
-    <br>
-    <br>
-
     <a href="index.html">Go back to the main page</a>
+            
+        </section>
+    </div>
+    <script>
+
+function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 3}s`;
+                document.body.appendChild(confetti);
+            }
+        }
+
+         function createBalloons() {
+          for (let i = 0; i < 5; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.top = `${Math.random() * 50 + 50}vh`;
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            balloon.style.animationDelay = `${Math.random() * 5}s`;
+            balloon.style.animationDuration = `${Math.random() * 3 + 5}s`;
+            balloon.addEventListener('click', () => {
+                balloon.classList.add('popped');
+                setTimeout(() => {
+                    balloon.remove();
+                }, 300); // Remove balloon after transition
+            });
+            document.body.appendChild(balloon);
+          }
+        }
+
+        createConfetti();
+        createBalloons();
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Greeting Reveal
+    const secretMessage = document.getElementById('secretMessage');
+    secretMessage.textContent = "Enjoy your day my sweetest princess 😘😘🥰❤️!";
+    secretMessage.style.opacity = 0;
+    setTimeout(() => {
+        secretMessage.style.transition = 'opacity 1s ease-in-out';
+        secretMessage.style.opacity = 1;
+    }, 1000);
+
+    // Love Letter Animation
+    const letterText = document.getElementById('letterText');
+    const text = "My dearest babycakes,\nHappiest Birthday to you!\nSobrang love na love kita.\nI love you more than words that I can say😘😘.";
+    let index = 0;
+    function typeWriter() {
+        if (index < text.length) {
+            letterText.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 50);
+        }
+    }
+    typeWriter();
+
+    // Quiz
+    const checkAnswer = document.getElementById('checkAnswer');
+    const iceCreamAnswer = document.getElementById('iceCreamAnswer');
+    const feedback = document.getElementById('feedback');
+    checkAnswer.addEventListener('click', () => {
+        if (iceCreamAnswer.value.toLowerCase() === 'coffee') {
+            feedback.textContent = "You got it! Galing ng babycakes ko!";
+        } else {
+            feedback.textContent = "Wrong ka po babycakes ko :*";
+        }
+    });
+
+    
+    // Hidden Message Game
+    const stars = document.querySelectorAll('.star');
+    const hiddenMessageResult = document.getElementById('hiddenMessageResult');
+    const collectedLettersDisplay = document.getElementById('collectedLettersDisplay');
+    let collectedLetters =[]; // Use an array to store collected letters
+
+    function resetGame() {
+        collectedLetters =[];
+        hiddenMessageResult.textContent = '';
+        collectedLettersDisplay.textContent = '';
+        stars.forEach(star => star.classList.remove('collected'));
+    }
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            if (star.dataset.letter === "E-reset") {
+                resetGame();
+                return;
+            }
+            if (star.classList.contains('collected')) return; // Prevent double collection.
+
+            collectedLetters.push(star.dataset.letter); // Add letter to array
+            collectedLettersDisplay.textContent = `Collected: ${collectedLetters.join('')}`; // Display collected letters
+
+            star.classList.add('collected');
+
+            if (collectedLetters.length === 4) {
+                if (collectedLetters.join('') === 'LOVE') { // Check if collected letters match 'LOVE'
+                    hiddenMessageResult.textContent = "You found the word! I love you so much!";
+                } else {
+                    resetGame();
+                    hiddenMessageResult.textContent = "Try again!";
+                    
+                }
+            }
+        });
+    });
+
+    // Countdown
+    const countdownTimer = document.getElementById('countdownTimer');
+    function updateCountdown() {
+        const nextBirthday = new Date();
+        nextBirthday.setMonth(11); // December (0-indexed)
+        nextBirthday.setDate(25); // Example: December 25th
+        if (nextBirthday < new Date()) {
+            nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+        }
+        const timeRemaining = nextBirthday - new Date();
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        countdownTimer.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+});
+
+    </script>
+    <br>
+    <br>
+
+
+
+    <br>
+    <br>
+
+   
 
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
